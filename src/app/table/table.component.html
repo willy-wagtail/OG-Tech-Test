@@ -1,0 +1,69 @@
+<table id="table1">
+  <caption>
+    Data about a group's initial margin value and it's sub-groups.
+  </caption>
+
+  <thead>
+    <tr>
+      <th scope="col">Grouping</th>
+      <th scope="col">Initial Margin</th>
+      <th scope="col">IM % of Total</th>
+    </tr>
+  </thead>
+
+  <tbody
+    *ngFor="let row of data; trackBy: trackByMethod" 
+    role="rowgroup"         
+    [attr.aria-label]="'Rows related to ' + row.name" 
+  >
+      <tr (click)="toggleChildRows(row.name)">
+        <td class="chevron-cell">
+          <og-chevron-right 
+            class="chevron-cell__icon" 
+            *ngIf="isCollapsed(row.name); else chevronDown"
+          >
+          </og-chevron-right>
+
+          <ng-template #chevronDown>
+            <og-chevron-down class="chevron-cell__icon"></og-chevron-down>
+          </ng-template>
+
+          <span class="chevron-cell__name">
+            {{ row.name }}
+          </span>
+        </td>
+
+        <td>{{ row.imValue.price | currency }}</td>
+        <td>
+          <og-progress-bar 
+            [totalParts]="totalImValue" 
+            [completedParts]="row.imValue.price"
+            [showText]="false"
+          >
+          </og-progress-bar>
+        </td>
+        
+      </tr>
+
+      <ng-container *ngIf="!isCollapsed(row.name)">
+        <tr 
+          class="child-row" 
+          *ngFor="let child of row.children; trackBy: trackByMethod"
+          [attr.aria-label]="'Child of ' + row.name" 
+        >
+          <td >{{ child.name }}</td>
+          <td>{{ child.imValue.price | currency }}</td>
+          <td>
+            <og-progress-bar 
+              [totalParts]="totalImValue" 
+              [completedParts]="child.imValue.price"
+              [showText]="false"
+            >
+            </og-progress-bar>
+          </td>
+        </tr>
+      </ng-container>
+  </tbody>
+
+</table>
+

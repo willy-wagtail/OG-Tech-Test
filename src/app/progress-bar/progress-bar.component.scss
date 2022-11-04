@@ -1,0 +1,25 @@
+/*!
+ * Copyright (C) 2018 - present by OpenGamma Inc. and the OpenGamma group of companies
+ *
+ * Please see distribution for license.
+ */
+
+@import 'variables';
+
+.bar {
+  &__track {
+    height: $base-spacing-unit;
+    background: $line-color;
+    border-bottom-right-radius: $base-spacing-unit;
+    border-top-right-radius: $base-spacing-unit;
+    position: relative;
+  }
+
+  &__value {
+    background: $bar-color;
+    display: block;
+    height: 100%;
+    border-bottom-right-radius: $base-spacing-unit;
+    border-top-right-radius: $base-spacing-unit;
+  } 
+}

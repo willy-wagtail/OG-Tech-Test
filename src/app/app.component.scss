@@ -1,0 +1,22 @@
+/*!
+ * Copyright (C) 2018 - present by OpenGamma Inc. and the OpenGamma group of companies
+ *
+ * Please see distribution for license.
+ */
+
+@import 'variables';
+
+.bounded__container {
+  width: 70%;
+  min-width: 700px;
+  margin: 10 * $base-spacing-unit auto;
+}
+
+.app__container {
+  border-radius: 10 * $base-spacing-unit;
+  background: white;
+  box-shadow: $container-box-shadow;
+  padding: 10 * $base-spacing-unit;
+  min-height: calc(100vh - #{75 * $base-spacing-unit});
+  overflow-y: auto;
+}

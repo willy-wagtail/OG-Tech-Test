@@ -1,0 +1,18 @@
+<!--
+  ~ Copyright (C) 2018 - present by OpenGamma Inc. and the OpenGamma group of companies
+  ~
+  ~ Please see distribution for license.
+  -->
+
+<!--TODO: Improve this-->
+
+<p *ngIf="showText">
+  <b>{{completedParts}}</b> of <b>{{totalParts}}</b> completed
+</p>
+
+<div class="bar__track">
+  <div 
+    class="bar__value"
+    [style.width.%]="!showLoading ? getBarWidth() : (loadingBarWidth | async)"
+  ></div>
+</div>
